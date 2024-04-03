@@ -1,0 +1,3 @@
+#! /bin/bash
+
+cd $(find /mnt/storage/personal/ /mnt/storage/work -mindepth 1 -maxdepth 1 | fzf)
