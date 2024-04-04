@@ -116,6 +116,7 @@
     spotify
     jetbrains-toolbox
     lxappearance
+    themechanger
 
   # utils
     wget
@@ -135,15 +136,10 @@
     ripgrep
     unzip
     gnumake
-
-    # theme
-    (catppuccin-gtk.override {
-      accents = [ "pink" ];
-      size = "compact";
-      tweaks = [ "rimless" "black" ];
-      variant = "mocha";
-    })
   ];
+
+  # theme
+  qt.style = "adwaita-dark";
 
   # set zsh as default shell
   programs.zsh.enable = true;
