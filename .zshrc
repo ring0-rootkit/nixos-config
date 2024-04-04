@@ -30,6 +30,7 @@ alias templg="cd templ && templ generate && cd .."
 alias ta="tmux_sessions a"
 alias tl="tmux_sessions l"
 alias tk="tmux_sessions k"
+alias gc="git add . && git commit -e"
 alias dc=cd
 alias ls='ls'
 alias vim=nvim
