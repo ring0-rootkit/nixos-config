@@ -9,7 +9,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -27,8 +27,15 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
+  services.xserver = {
+    enable = true;
+    libinput = {
+      enable = true;
+      mouse = {
+        accelProfile = "flat";
+      };
+    };
+  };
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -36,8 +43,7 @@
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us,ru";
-    xkb.variant = "";
-    xkb.options = "grep:win_space_toggle";
+    xkb.options = "grp:alt_space_toggle";
   };
 
   # Enable CUPS to print documents.
@@ -98,12 +104,18 @@
     zig
     go
     maven
+    clang
 
   # apps
     kitty
     htop
     arandr
     discord
+    telegram-desktop
+    steam
+    spotify
+    jetbrains-toolbox
+    lxappearance
 
   # utils
     wget
@@ -121,6 +133,16 @@
     tmux
     fzf
     ripgrep
+    unzip
+    gnumake
+
+    # theme
+    (catppuccin-gtk.override {
+      accents = [ "pink" ];
+      size = "compact";
+      tweaks = [ "rimless" "black" ];
+      variant = "mocha";
+    })
   ];
 
   # set zsh as default shell
@@ -153,6 +175,12 @@
   system.autoUpgrade = {
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
+  };
+
+  nix.gc = {
+    automatic = true;
+    randomizedDelaySec = "14m";
+    options = "--delete-older-than 10d";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
