@@ -99,6 +99,7 @@
         CPU_MAX_PERF_ON_BAT = 40;
 
        #Optional helps save long term battery health
+       #thinkpad only (i leave it here 'cause if your laptop isnt a thinkpad this options will be ignored)
        START_CHARGE_THRESH_BAT0 = 70; # 70 and bellow it starts to charge
        STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
 
