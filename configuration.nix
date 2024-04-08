@@ -80,6 +80,31 @@
     useDefaultShell = true;
   };
 
+# power management (tlp)
+ powerManagement.enable = true; 
+ services.power-profiles-daemon.enable = false;
+
+  services.tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 40;
+
+       #Optional helps save long term battery health
+       START_CHARGE_THRESH_BAT0 = 70; # 70 and bellow it starts to charge
+       STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
+
+      };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   
@@ -114,10 +139,10 @@
     telegram-desktop
     spotify
     jetbrains-toolbox
-    lxappearance
     themechanger
 
   # utils
+    p7zip
     wget
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -136,16 +161,6 @@
     unzip
     gnumake
   ];
-
-  # install steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-
-
 
   # theme
   qt.style = "adwaita-dark";
@@ -185,7 +200,7 @@
   nix.gc = {
     automatic = true;
     randomizedDelaySec = "14m";
-    options = "--delete-older-than 10d";
+    options = "--delete-older-than 3d";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
