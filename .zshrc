@@ -31,7 +31,8 @@ alias ta="tmux_sessions a"
 alias tl="tmux_sessions l"
 alias tk="tmux_sessions k"
 alias gc="git add . && git commit -e"
-alias "start-dockerd"="dockerd 1>/dev/null 2>/dev/null & disown"
+# sudo echo is for entering password cause docker will be disown
+alias "start-dockerd"="sudo echo '' && sudo dockerd 1>/dev/null 2>/dev/null & disown"
 alias dc=cd
 alias ls='ls'
 alias vim=nvim
