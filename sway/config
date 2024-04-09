@@ -99,6 +99,8 @@ bindswitch lid:off output eDP-1 enable
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    bindsym $mod+shift+z exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
 #
 # Workspaces:
 #
