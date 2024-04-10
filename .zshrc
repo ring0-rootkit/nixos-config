@@ -42,5 +42,6 @@ alias n='neofetch'
 alias gitignore="echo '.*' > .gitignore"
 alias c=gcc -std=c99
 alias sync="cp ~/.zshrc ~/personal/nixos-config/ && cp ~/.tmux.conf ~/personal/nixos-config/ && cp /etc/nixos/configuration.nix ~/personal/nixos-config/ && cd ~/personal/nixos-config/ && git add . && git commit -e && git push"
+alias gparted="sudo -E gparted"
 
 if [ -z $TMUX ]; then; tmux_sessions a code; fi
