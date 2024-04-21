@@ -154,7 +154,6 @@
   # apps
     kitty
     htop
-    discord
     telegram-desktop
     spotify
     jetbrains-toolbox
