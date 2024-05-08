@@ -70,9 +70,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.m8 = {
+  users.users.ring0 = {
     isNormalUser = true;
-    description = "m8";
+    description = "ring0";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
       firefox
@@ -141,7 +141,7 @@
     lombok
 
   # languages
-    cargo
+    rustup
     nodejs_21
     python3
     openjdk
@@ -196,19 +196,25 @@
   # Will be exposed through DBus to programs willing to store secrets.
   services.gnome.gnome-keyring.enable = true;
 
-  programs.sway = {
+  programs.hyprland = {
+    # Install the packages from nixpkgs
     enable = true;
-    wrapperFeatures.gtk = true;
+    # Whether to enable XWayland
+    xwayland.enable = true;
   };
+
+  # If swaylock cannot be unlocked with the correct password:
+  security.pam.services.swaylock = {};
 
  # enable light to be able to configure light
   programs.light.enable = true;
 
   programs.tmux = {
     enable = true;
-    extraConfig = ''
-    set -g default-shell ${pkgs.zsh}/bin/zsh
-    '';
+    # delete it later
+    # extraConfig = ''
+    # set -g default-shell ${pkgs.zsh}/bin/zsh
+    # '';
   };
 
   system.autoUpgrade = {
