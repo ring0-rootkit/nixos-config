@@ -167,9 +167,12 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system developed by swaywm maintainer
     pulseaudio
+    waybar
     swaybg
     swaylock
     wlogout
+    thunar
+    swappy
     wofi
     grim
     zsh
