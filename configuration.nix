@@ -37,13 +37,13 @@
     };
   };
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us,ru";
-    xkb.options = "grp:alt_space_toggle";
+    xkb.options = "grp:win_space_toggle";
   };
 
   # Enable CUPS to print documents.
@@ -72,13 +72,25 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ring0 = {
     isNormalUser = true;
-    description = "ring0";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    description = "r0";
+    extraGroups = [ "networkmanager" "wheel" "video", "docker" ];
     packages = with pkgs; [
       firefox
+      flatpak
     ];
-    useDefaultShell = true;
+    defaultUserShell = pkgs.zsh;
   };
+
+  # flatpak
+  services.flatpak.enable = true;
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
+
 
 # polkit
   security.polkit.enable = true;
@@ -138,34 +150,30 @@
     gh
     docker
     docker-compose
-    lombok
 
   # languages
     rustup
-    nodejs_21
+    nodejs_24
     python3
     openjdk
     gcc
     zig
     go
-    maven
     clang
 
   # apps
-    kitty
+    ghostty
     htop
     telegram-desktop
     spotify
-    jetbrains-toolbox
-    gparted
 
   # utils
     p7zip
     wget
-    grim # screenshot functionality
-    slurp # screenshot functionality
+    grim
+    slurp
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system developed by swaywm maintainer
+    mako
     pulseaudio
     waybar
     swaybg
@@ -174,7 +182,6 @@
     thunar
     swappy
     wofi
-    grim
     zsh
     tmux
     fzf
@@ -185,7 +192,7 @@
   ];
 
   # theme
-  qt.style = "adwaita-dark";
+  # qt.style = "adwaita-dark";
 
   # set zsh as default shell
   programs.zsh.enable = true;
