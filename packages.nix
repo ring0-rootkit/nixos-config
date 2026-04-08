@@ -22,6 +22,7 @@ with pkgs; [
   jq
   lua-language-server
   nodejs
+  protobuf
   python3
   ripgrep
   rust-analyzer
