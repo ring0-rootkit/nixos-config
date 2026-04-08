@@ -3,7 +3,6 @@ with pkgs; [
   adwaita-icon-theme
   btop
   bun
-  cargo
   clang
   eza
   fastfetch
@@ -19,9 +18,13 @@ with pkgs; [
   greetd
   inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   jq
+  lua-language-server
   nodejs
   python3
   ripgrep
+  rust-analyzer
+  rustup
+  stylua
   telegram-desktop
   tmux
   tree-sitter

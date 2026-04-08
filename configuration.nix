@@ -142,6 +142,8 @@ in
 
 # programs {{{
 
+  # use ld compatibility layer
+  programs.nix-ld.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
