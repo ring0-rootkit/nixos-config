@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, inputs, ... }:
 
 let
@@ -17,13 +13,20 @@ in
       ./hardware-configuration.nix
     ];
 
-    nixpkgs.overlays = [
-      (self: super: {
-        xorg = super.xorg // {
-          lndir = super.lndir;
-        };
-      })
-    ];
+# overlays {{{
+
+  # some dependency uses old naming, so alias old name to a new one
+  nixpkgs.overlays = [
+    (self: super: {
+      xorg = super.xorg // {
+        lndir = super.lndir;
+      };
+    })
+  ];
+
+# }}}
+
+# gnome {{{
 
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -36,6 +39,10 @@ in
 
   environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+# }}}
+
+# home manager {{{
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
@@ -90,6 +97,10 @@ in
     home.enableNixpkgsReleaseCheck = false;
   };
 
+# }}}
+
+# system {{{
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -97,29 +108,27 @@ in
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "r0"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time.timeZone = "Europe/Minsk";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+# }}}
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+# networking {{{
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  networking.hostName = "r0"; # Define your hostname.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+
+# }}}
+
+# user setup {{{
+
   users.users.r0 = {
     isNormalUser = true;
     description = "r0";
@@ -129,61 +138,20 @@ in
 
   users.defaultUserShell = pkgs.zsh;
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-  };
+#}}}
 
-  # Allow unfree packages
+# programs {{{
+
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    firefox
-    clang
-    gcc
-    zig
-    ghostty
-    git
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    tmux
+  environment.systemPackages = (import ./packages.nix { inherit pkgs; });
 
-    unzip
-    nodejs
-    python3
-    cargo
-
-    tree-sitter
-
-    xdg-desktop-portal-gtk
-    wl-clipboard
-    wireplumber
-    foot
-    fastfetch
-    btop
-    jq
-    eza
-    telegram-desktop
-    fzf
-    ripgrep
-    gnomeExtensions.appindicator
-
-    tuigreet
-    greetd
-    go
-    adwaita-icon-theme
-    bun
-    gnome-tweaks
-  ];
-
-
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -193,16 +161,27 @@ in
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
+# }}}
 
+# misc {{{
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
+#}}}
+
+# services {{{
+
+  # List services that you want to enable:
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+# }}}
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

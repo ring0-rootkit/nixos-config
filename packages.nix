@@ -1,0 +1,36 @@
+{ pkgs, ... };
+with pkgs; [
+  adwaita-icon-theme
+  btop
+  bun
+  cargo
+  clang
+  eza
+  fastfetch
+  firefox
+  foot
+  fzf
+  gcc
+  ghostty
+  git
+  gnome-tweaks
+  gnomeExtensions.appindicator
+  go
+  greetd
+  inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+  jq
+  nodejs
+  python3
+  ripgrep
+  telegram-desktop
+  tmux
+  tree-sitter
+  tuigreet
+  unzip
+  vim 
+  wget
+  wireplumber
+  wl-clipboard
+  xdg-desktop-portal-gtk
+  zig
+]
