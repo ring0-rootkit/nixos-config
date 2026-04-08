@@ -146,7 +146,7 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (import ./packages.nix { inherit pkgs; });
+  environment.systemPackages = (import ./packages.nix { inherit pkgs inputs; });
 
   programs.zsh = {
     enable = true;
