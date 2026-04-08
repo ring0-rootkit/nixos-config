@@ -4,6 +4,7 @@ with pkgs; [
   btop
   bun
   clang
+  cmake
   eza
   fastfetch
   firefox
@@ -14,6 +15,7 @@ with pkgs; [
   git
   gnome-tweaks
   gnomeExtensions.appindicator
+  gnumake
   go
   greetd
   inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
