@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 with pkgs; [
   adwaita-icon-theme
+  bear
   btop
   bun
   clang
