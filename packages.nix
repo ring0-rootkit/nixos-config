@@ -23,6 +23,7 @@ with pkgs; [
   jq
   lua-language-server
   nodejs
+  pkg-config
   protobuf
   python3
   ripgrep
