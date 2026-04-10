@@ -1,5 +1,6 @@
 { pkgs, inputs, ... }:
 with pkgs; [
+  openssl
   adwaita-icon-theme
   bear
   btop
