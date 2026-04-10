@@ -140,16 +140,16 @@ in
 
   users.defaultUserShell = pkgs.zsh;
 
-  # programs.bash.interactiveShellInit = ''
-  #   nix() {
-  #     if [[ $1 == "develop" ]]; then
-  #       shift
-  #       command nix develop -c zsh "$@"
-  #     else
-  #       command nix "$@"
-  #     fi
-  #   }
-  # '';
+  programs.bash.interactiveShellInit = ''
+    nix() {
+      if [[ $1 == "develop" ]]; then
+        shift
+        command nix develop -c zsh "$@"
+      else
+        command nix "$@"
+      fi
+    }
+  '';
 
 #}}}
 
