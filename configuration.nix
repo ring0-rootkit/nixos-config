@@ -131,6 +131,7 @@ in
 # user setup {{{
 
   users.users.r0 = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "r0";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -138,6 +139,17 @@ in
   };
 
   users.defaultUserShell = pkgs.zsh;
+
+  # programs.bash.interactiveShellInit = ''
+  #   nix() {
+  #     if [[ $1 == "develop" ]]; then
+  #       shift
+  #       command nix develop -c zsh "$@"
+  #     else
+  #       command nix "$@"
+  #     fi
+  #   }
+  # '';
 
 #}}}
 
