@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
-set -a
+set -e
 sudo nixos-rebuild switch --flake .#r0
 git add -A
 git commit
 git push
-set +a
+set +e

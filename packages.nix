@@ -7,7 +7,6 @@ with pkgs; [
   bun
   clang
   cmake
-  chrome-browser
   eza
   fastfetch
   firefox
@@ -20,6 +19,7 @@ with pkgs; [
   gnomeExtensions.appindicator
   gnumake
   go
+  google-chrome
   greetd
   inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   jq
