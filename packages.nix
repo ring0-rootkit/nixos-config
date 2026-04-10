@@ -7,6 +7,7 @@ with pkgs; [
   bun
   clang
   cmake
+  chrome-browser
   eza
   fastfetch
   firefox
