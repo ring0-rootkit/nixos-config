@@ -1,11 +1,11 @@
 { pkgs, inputs, ... }:
 with pkgs; [
-  openssl
   adwaita-icon-theme
   bear
   btop
   bun
   clang
+  clickhouse
   cmake
   eza
   fastfetch
@@ -25,6 +25,7 @@ with pkgs; [
   jq
   lua-language-server
   nodejs
+  openssl
   pkg-config
   protobuf
   python3
