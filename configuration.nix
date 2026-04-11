@@ -184,14 +184,6 @@ in
     enable = true;
   };
 
-  services.jupyter = {
-    enable = true;
-    user = "r0";
-    group = "users";
-    password = "r0";
-    notebookDir = "~/personal/notebooks";
-  };
-
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
