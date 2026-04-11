@@ -86,12 +86,24 @@ in
 
     dconf = {
       enable = true;
-      settings."org/gnome/desktop/interface".color-scheme = "prefer-light";
-      settings."org/gnome/shell" = {
-        disable-user-extensions = false;
-        enabled-extensions = with pkgs.gnomeExtensions; [
-          luminus-desktop.extensionUuid
-        ];
+      settings = {
+        "org/gnome/desktop/interface".color-scheme = "prefer-light";
+        "org/gnome/shell" = {
+          disable-user-extensions = false;
+          enabled-extensions = with pkgs.gnomeExtensions; [
+            luminus-desktop.extensionUuid
+          ];
+        };
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          custom-keybindings = [
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          ];
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          name = "Wayscriber Annotate";
+          command = "wayscriber -a";
+          binding = "<Super>d";
+        };
       };
     };
 
