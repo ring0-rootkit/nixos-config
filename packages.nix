@@ -1,5 +1,7 @@
 { pkgs, inputs, ... }:
 with pkgs; [
+  pkgs.jetbrains.pycharm
+  python3
   adwaita-icon-theme
   bear
   btop
