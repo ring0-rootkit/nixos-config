@@ -44,11 +44,18 @@ in
 
 # home manager {{{
 
+
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
   home-manager.users.r0 = { pkgs, ... }: {
     home.stateVersion = "25.11"; 
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     programs.git = {
       enable = true;
@@ -87,7 +94,7 @@ in
     dconf = {
       enable = true;
       settings = {
-        "org/gnome/desktop/interface".color-scheme = "prefer-light";
+        "org/gnome/desktop/interface".color-scheme = "prefer-dark";
         "org/gnome/shell" = {
           disable-user-extensions = false;
           enabled-extensions = with pkgs.gnomeExtensions; [
