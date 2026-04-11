@@ -23,6 +23,7 @@ with pkgs; [
   go
   google-chrome
   greetd
+  grim
   inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   jq
   lua-language-server
@@ -35,6 +36,7 @@ with pkgs; [
   rust-analyzer
   rustup
   stylua
+  slurp
   telegram-desktop
   tmux
   tree-sitter
