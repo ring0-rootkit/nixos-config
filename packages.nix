@@ -41,6 +41,7 @@ with pkgs; [
   tuigreet
   unzip
   vim 
+  wayscriber
   wget
   wireplumber
   wl-clipboard
