@@ -95,6 +95,23 @@ in
       };
     };
 
+    systemd.user.services.wayscriber = {
+      Unit = {
+        Description = "Wayscriber screen annotation daemon";
+        After = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.wayscriber}/bin/wayscriber --daemon";
+        Restart = "on-failure";
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
+
+
+
     home.enableNixpkgsReleaseCheck = false;
   };
 
