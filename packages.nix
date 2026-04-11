@@ -46,4 +46,7 @@ with pkgs; [
   wl-clipboard
   xdg-desktop-portal-gtk
   zig
+  (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+    ipywidgets
+  ]))
 ]
