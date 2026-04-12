@@ -22,11 +22,15 @@ with pkgs; [
   google-chrome
   greetd
   grim
+  hunspell
+  hunspellDicts.en_GB-ize
+  hunspellDicts.ru_RU
   inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   jq
   kid3
-  lua-language-server
+  libreoffice
   lollypop
+  lua-language-server
   nodejs
   openssl
   pkg-config
