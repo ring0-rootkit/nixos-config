@@ -26,6 +26,7 @@ with pkgs; [
   jq
   kid3
   lua-language-server
+  lollypop
   nodejs
   openssl
   pkg-config
