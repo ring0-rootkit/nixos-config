@@ -1,7 +1,5 @@
 { pkgs, inputs, ... }:
 with pkgs; [
-  pkgs.jetbrains.pycharm
-  python3
   adwaita-icon-theme
   bear
   btop
@@ -26,17 +24,20 @@ with pkgs; [
   grim
   inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   jq
+  kid3
   lua-language-server
   nodejs
   openssl
   pkg-config
+  pkgs.jetbrains.pycharm
   protobuf
+  python3
   python3
   ripgrep
   rust-analyzer
   rustup
-  stylua
   slurp
+  stylua
   telegram-desktop
   tmux
   tree-sitter
