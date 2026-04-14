@@ -146,6 +146,16 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   time.timeZone = "Europe/Minsk";
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver 
+      intel-compute-runtime
+      vulkan-loader
+      vulkan-validation-layers
+    ];
+  };
+
 
 # }}}
 
