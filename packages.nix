@@ -31,6 +31,7 @@ with pkgs; [
   libreoffice
   lollypop
   lua-language-server
+  modrinth-app
   nodejs
   openssl
   pkg-config
