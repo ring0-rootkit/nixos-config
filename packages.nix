@@ -9,6 +9,7 @@ with pkgs; [
   cmake
   eza
   fastfetch
+  ffmpeg-full
   firefox
   foot
   fzf
@@ -34,6 +35,7 @@ with pkgs; [
   modrinth-app
   nodejs
   openssl
+  parallel-full
   pkg-config
   pkgs.jetbrains.pycharm
   protobuf
@@ -45,6 +47,7 @@ with pkgs; [
   slurp
   stylua
   telegram-desktop
+  tldr
   tmux
   tree-sitter
   tuigreet
