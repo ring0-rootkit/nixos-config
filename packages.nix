@@ -12,6 +12,7 @@ with pkgs; [
   ffmpeg-full
   firefox
   foot
+  freerdp
   fzf
   gcc
   ghostty
