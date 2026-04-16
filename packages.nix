@@ -35,6 +35,7 @@ with pkgs; [
   lua-language-server
   modrinth-app
   nodejs
+  opencode
   openssl
   parallel-full
   pkg-config
