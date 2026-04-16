@@ -156,6 +156,8 @@ in
     ];
   };
 
+  virtualisation.docker.enable = true;
+
 
 # }}}
 
@@ -180,7 +182,7 @@ in
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "r0";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
