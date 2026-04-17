@@ -1,5 +1,6 @@
 { pkgs, inputs, ... }:
 with pkgs; [
+  qbittorrent
   adwaita-icon-theme
   bear
   btop
